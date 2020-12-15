@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from preprocessing.preprocessing import cleandata
 from preprocessing.vectorization import get_counts, del_words, create_vocab, encode_sentence
 from preprocessing.ReviewDataset import ReviewsDataset
@@ -11,10 +12,13 @@ import torch.optim as optim
 from torch.autograd import Variable
 from torch.utils.data import Dataset, DataLoader, TensorDataset
 
+print("reading data....")
 df = pd.read_json('data/Digital_Music_5.json', lines = True)
 
+print("Cleaning data....")
 df1 = cleandata(df)
 
+print("Vecotrizing data....")
 item_counts = get_counts(df1, 'reviewText_item')
 user_counts = get_counts(df1, 'reviewText_user')
 
@@ -27,6 +31,7 @@ user_words = create_vocab(user_counts)
 df1['encoded_item'] = df1['reviewText_item'].apply(lambda x: np.array(encode_sentence(x, item_words[1])))
 df1['encoded_user']=df1['reviewText_user'].apply(lambda x: np.array(encode_sentence(x, user_words[1])))
 
+print("Creating training and validation datasets....")
 X=list(df1['encoded_item'])
 X2=list(df1['encoded_user'])
 y = list(df1['overall_avg'])
@@ -49,4 +54,5 @@ item_valid_dl = DataLoader(valid_item_ds, batch_size=batch_size)
 user_train_dl = DataLoader(train_user_ds, batch_size=batch_size)
 user_valid_dl = DataLoader(valid_user_ds, batch_size=batch_size)
 
+print("Running MultiInputModel....")
 MultiInputModel(item_train_dl,item_valid_dl,item_vocab,user_train_dl,user_valid_dl,user_vocab,100,70)
