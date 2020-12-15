@@ -4,3 +4,10 @@ This is a basic implementation of a multi-input review-level neural network. The
 *Chen, Chong, et al. "Neural attentional rating regression with review-level explanations." Proceedings of the 2018 World Wide Web Conference. 2018.*
 
 Contributors: Munish Khurana, Maryam Soomro, Ellen Zhang, Makaela Jackson
+
+## Get Data
+Download and unzip "Digital Music" data set from :
+
+http://jmcauley.ucsd.edu/data/amazon/
+
+Then put it under the path data
