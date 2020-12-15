@@ -3,6 +3,13 @@ from preprocessing.preprocessing import cleandata
 from preprocessing.vectorization import get_counts, del_words, create_vocab, encode_sentences
 from preprocessing.ReviewDataset import ReviewDataset
 from model.MultiInputModel import MultiInputModel
+from sklearn.metrics import mean_squared_error
+import torch
+import torch.nn as nn 
+import torch.nn.functional as F 
+import torch.optim as optim
+from torch.autograd import Variable
+from torch.utils.data import Dataset, DataLoader, TensorDataset
 
 df = pd.read_json('/data/Digital_music_5.json', lines = True)
 
