@@ -11,7 +11,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 from torch.utils.data import Dataset, DataLoader, TensorDataset
 
-df = pd.read_json('/data/Digital_music_5.json', lines = True)
+df = pd.read_json('data/Digital_Music_5.json', lines = True)
 
 df1 = cleandata(df)
 
