@@ -34,7 +34,7 @@ def train_LSTMmodel(model, dataloader, val, num, epochs=10, lr=0.001):
             #print("epoch: %.1f: train loss %.3f, val loss %.3f, val accuracy %.3f, and val rmse %.3f" % (i, sum_loss/total, val_loss, val_acc, val_rmse))
             modelSave = savebestmodel(val_acc, max, metrics)
             if modelSave:
-              torch.save(model.state_dict(), '/content/drive/MyDrive/758B/Big Data Project/model'+str(num)+'.pt')
+              torch.save(model.state_dict(), 'model/model'+str(num)+'.pt')
     return y_pred
     
 def validation_LSTMmetrics (model, val):
