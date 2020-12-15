@@ -1,9 +1,6 @@
 import numpy as np
 import pandas as pd
 
-# reads JSON data file
-df = pd.read_json('/data/Digital_Music_5.json', lines=True)
-
 def cleandata(df):
   
   # reviewText_iTem contains all reviews pertaining to that item
