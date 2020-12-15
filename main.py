@@ -1,6 +1,6 @@
 import pandas as pd
 from preprocessing.preprocessing import cleandata
-from preprocessing.vectorization import get_counts, del_words, create_vocab, encode_sentences
+from preprocessing.vectorization import get_counts, del_words, create_vocab, encode_sentence
 from preprocessing.ReviewDataset import ReviewDataset
 from model.MultiInputModel import MultiInputModel
 from sklearn.metrics import mean_squared_error
