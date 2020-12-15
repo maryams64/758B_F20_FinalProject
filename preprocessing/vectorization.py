@@ -5,7 +5,7 @@ import string
 import spacy
 
 
-tok = spacy.load('en_core_web_md')
+tok = spacy.load('en')
 def tokenize (text):
     text = re.sub(r"[^\x00-\x7F]+", " ", text)
     regex = re.compile('[' + re.escape(string.punctuation) + '0-9\\r\\t\\n]') # remove punctuation and numbers
