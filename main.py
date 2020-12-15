@@ -12,13 +12,13 @@ import torch.optim as optim
 from torch.autograd import Variable
 from torch.utils.data import Dataset, DataLoader, TensorDataset
 
-print("reading data....")
+print("Reading data....")
 df = pd.read_json('data/Digital_Music_5.json', lines = True)
 
 print("Cleaning data....")
 df1 = cleandata(df)
 
-print("Vecotrizing data....")
+print("Vectorizing data....")
 item_counts = get_counts(df1, 'reviewText_item')
 user_counts = get_counts(df1, 'reviewText_user')
 
