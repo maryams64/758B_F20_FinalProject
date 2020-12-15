@@ -26,7 +26,7 @@ def MultiInputModel(item_train_dl,item_valid_dl,item_vocab,user_train_dl,user_va
 
   #abstract out hard-coding of 432
   X_tensor = FCFN_input
-  Y_tensor = torch.from_numpy(np.array(y[:432]))
+  Y_tensor = torch.from_numpy(np.array(y[:432])).type(torch.long)
 
 
   dataset = TensorDataset(X_tensor,Y_tensor)
