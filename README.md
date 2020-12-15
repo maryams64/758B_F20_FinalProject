@@ -5,6 +5,23 @@ This is a basic implementation of a multi-input review-level neural network. The
 
 Contributors: Munish Khurana, Maryam Soomro, Ellen Zhang, Makaela Jackson
 
+# Data Source
+
+Digital Music dataset from Amazon Reviews Datasets provided by UCSD.
+
+# Network Structure
+
+Inputs: 
+`userID + reviewText`
+`asin + reviewText`
+
+Outputs:
+`overall`
+
+- Inputs are fed into individual LSTM cells, one for reviewuser items and one for reviewitem items. 
+- The two outputs from the LSTM cells are flattened and concatenated.
+- The flattened output is fed into a FCFN to predict overall rating. 
+
 # Environment
 ```
 python 3.8.5
