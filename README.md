@@ -5,11 +5,13 @@ This is a basic implementation of a multi-input review-level neural network. The
 
 Contributors: Munish Khurana, Maryam Soomro, Ellen Zhang, Makaela Jackson
 
-# Data Source
+## Data Source
 
 Digital Music dataset from Amazon Reviews Datasets provided by UCSD.
 
-# Network Structure
+## Network Structure
+
+Network aims to quantify the impact of userID and asin on the rating given to a product. 
 
 Inputs: 
 `userID + reviewText`
@@ -22,7 +24,7 @@ Outputs:
 - The two outputs from the LSTM cells are flattened and concatenated.
 - The flattened output is fed into a FCFN to predict overall rating. 
 
-# Environment
+## Environment
 ```
 python 3.8.5
 numpy 1.18.5
@@ -32,7 +34,7 @@ spacy 2.2.4
 torch 1.7.0
 sklearn 0.22.1
 ```
-# Before Running the Code
+## Before Running the Code
 
 Your local machine may need to have the following packages installed:
 - spacy
@@ -47,7 +49,7 @@ Run the following line to ensure latest version of repository is downlaoded:
 
 Now you are ready to run the code!
 
-# Running the Code
+## Running the Code
 
 Run the following line the run the model:
 `python main.py`
