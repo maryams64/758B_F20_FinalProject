@@ -10,4 +10,4 @@ Download and unzip "Digital Music" data set from :
 
 http://jmcauley.ucsd.edu/data/amazon/
 
-Then put it under the path data
+Then put it under the [path](/data)
