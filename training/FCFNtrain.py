@@ -20,6 +20,7 @@ def trainFCFN(model, train_loader, optimizer, criterion):
 
     model = model.float()
     data = data.float()
+    target = target.float()
 
     #zero gradient
     optimizer.zero_grad()
