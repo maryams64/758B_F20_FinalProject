@@ -1,5 +1,6 @@
 from model.LSTMoutput import getLSTMModel, LSTMoutput
 from training.FCFNtrain import trainFCFN, evaluateFCFN
+from model.FCFN import FCFN
 import numpy as np
 import pandas as pd
 from sklearn.metrics import mean_squared_error
