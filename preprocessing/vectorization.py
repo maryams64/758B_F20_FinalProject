@@ -16,15 +16,15 @@ def get_counts(df, colname):
   counts = Counter()
   for index, row in df.iterrows():
     counts.update(tokenize(row[colname]))
-  print(counts)
+  #print(counts)
   return counts
 
 def del_words(counts):
-  print("num_words before:",len(counts.keys()))
+  #print("num_words before:",len(counts.keys()))
   for word in list(counts):
     if counts[word] < 2:
       del counts[word]
-  print("num_words after:",len(counts.keys()))
+  #print("num_words after:",len(counts.keys()))
   return counts
 
 def create_vocab(counts):
