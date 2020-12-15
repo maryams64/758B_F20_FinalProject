@@ -10,7 +10,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 from torch.utils.data import Dataset, DataLoader, TensorDataset
 
-def MultiInputModel(item_train_dl,item_valid_dl,item_vocab,user_train_dl,user_valid_dl,user_vocab,embedding_dim,hidden_dim):
+def MultiInputModel(item_train_dl,item_valid_dl,item_vocab,user_train_dl,user_valid_dl,user_vocab,embedding_dim,hidden_dim,y):
 
   item_LSTMmodel, user_LSTMmodel = getLSTMModel(item_train_dl, item_valid_dl,item_vocab,user_train_dl, user_valid_dl,user_vocab,100, 70)
 
