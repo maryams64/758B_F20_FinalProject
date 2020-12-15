@@ -1,4 +1,5 @@
 from __future__ import unicode_literals, print_function, division
+import numpy as np
 from collections import Counter
 import re
 import string
