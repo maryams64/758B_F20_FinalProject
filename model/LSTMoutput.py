@@ -19,8 +19,8 @@ def getLSTMModel(item_train_dl,item_valid_dl,item_vocab,user_train_dl,user_valid
   lstm_item_output = train_LSTMmodel(lstm_item_model, item_train_dl, item_valid_dl, 1, epochs=30, lr=0.01)
   lstm_user_output = train_LSTMmodel(lstm_user_model, user_train_dl, user_valid_dl, 2, epochs=30, lr=0.01)
 
-  item_model_PATH = '/content/drive/MyDrive/758B/Big Data Project/model1.pt'
-  user_model_PATH = '/content/drive/MyDrive/758B/Big Data Project/model2.pt'
+  item_model_PATH = 'model/model1.pt'
+  user_model_PATH = 'model/model2.pt'
 
   item_LSTMmodel = LSTM_fixed_len2(item_vocab, embedding_dim, hidden_dim)
   user_LSTMmodel = LSTM_fixed_len2(user_vocab, embedding_dim, hidden_dim)
