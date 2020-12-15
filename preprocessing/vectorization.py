@@ -1,8 +1,9 @@
+from __future__ import unicode_literals, print_function, division
 from collections import Counter
 import re
 import string
 import spacy
-from __future__ import unicode_literals, print_function, division
+
 
 tok = spacy.load('en')
 def tokenize (text):
