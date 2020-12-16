@@ -40,8 +40,8 @@ y = list(df1['overall_avg'])
 X_item_train, X_item_valid, y_item_train, y_item_valid = train_test_split(X, y, test_size=0.2)
 X_user_train, X_user_valid, y_user_train, y_user_valid = train_test_split(X2, y, test_size=0.2)
 
-train_item_ds = torch.from_numpy(X_item_train[idx][0].astype(np.int32)), y_item_train[idx], X_item_train[idx][1] 
-valid_item_ds = torch.from_numpy(X_user_train[idx][0].astype(np.int32)), y_user_train[idx], X_user_train[idx][1]
+train_item_ds = ReviewsDataset(X_item_train, y_item_train)
+valid_item_ds = ReviewsDataset(X_item_valid, y_item_valid)
 
 train_user_ds = ReviewsDataset(X_user_train, y_user_train)
 valid_user_ds = ReviewsDataset(X_user_valid, y_user_valid)
