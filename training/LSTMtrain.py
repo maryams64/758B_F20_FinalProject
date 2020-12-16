@@ -19,23 +19,23 @@ def train_LSTMmodel(model, dataloader, val, num, epochs=10, lr=0.001):
         model.train()
         sum_loss = 0.0
         total = 0
-        for x, y, l in dataloader:
-            x = x.long()
-            y = y.long()
-            y_pred = model(x, l)
+        for X, Y, h in dataloader:
+            X = X.long()
+            Y = Y.long()
+            Y_pred = model(X, h)
             optimizer.zero_grad()
-            loss = F.cross_entropy(y_pred, y)
+            loss = F.cross_entropy(Y_pred, Y)
             loss.backward()
             optimizer.step()
-            sum_loss += loss.item()*y.shape[0]
-            total += y.shape[0]    
+            sum_loss += loss.item()*Y.shape[0]
+            total += Y.shape[0]    
         val_loss, val_acc, val_rmse = validation_LSTMmetrics(model, val)
         if i % 5 == 1:
             #print("epoch: %.1f: train loss %.3f, val loss %.3f, val accuracy %.3f, and val rmse %.3f" % (i, sum_loss/total, val_loss, val_acc, val_rmse))
             modelSave = savebestmodel(val_acc, max, metrics)
             if modelSave:
               torch.save(model.state_dict(), 'model/model'+str(num)+'.pt')
-    return y_pred
+    return Y_pred
     
 def validation_LSTMmetrics (model, val):
     model.eval()
@@ -43,16 +43,16 @@ def validation_LSTMmetrics (model, val):
     total = 0
     sum_loss = 0.0
     sum_rmse = 0.0
-    for x, y, l in val:
-        x = x.long()
-        y = y.long()
-        y_hat = model(x, l)
-        loss = F.cross_entropy(y_hat, y)
-        pred = torch.max(y_hat, 1)[1]
-        correct += (pred == y).float().sum()
-        total += y.shape[0]
-        sum_loss += loss.item()*y.shape[0]
-        sum_rmse += np.sqrt(mean_squared_error(pred, y.unsqueeze(-1)))*y.shape[0]
+    for X, Y, h in val:
+        X = X.long()
+        Y = Y.long()
+        Y_hat = model(X, l)
+        loss = F.cross_entropy(Y_hat, Y)
+        pred = torch.max(Y_hat, 1)[1]
+        correct += (pred == Y).float().sum()
+        total += Y.shape[0]
+        sum_loss += loss.item()*Y.shape[0]
+        sum_rmse += np.sqrt(mean_squared_error(pred, Y.unsqueeze(-1)))*Y.shape[0]
     return sum_loss/total, correct/total, sum_rmse/total
 
 def savebestmodel(val_acc, max, metrics):
