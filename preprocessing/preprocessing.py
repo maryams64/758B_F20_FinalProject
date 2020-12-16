@@ -43,7 +43,7 @@ def cleandata(df):
   x_user_scaled = min_max_scaler.fit_transform(x_user_reshape)
   normalized_overalluser = pd.DataFrame(x_user_scaled,columns=['normalized_user'])
   
-  df = pd.concat([df, normalized_overallitem, normalized_overalluser],axis=1,ignore_idex=True)
+  df = pd.concat([df, normalized_overallitem, normalized_overalluser],axis=1,ignore_index=True)
   
   # slices the data in half to work with a manageable amount of data
   df1=df.sample(frac=0.5)
