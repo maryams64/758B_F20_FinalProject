@@ -27,12 +27,26 @@ def cleandata(df):
   df['overall_avg'] = df['overall_avg'].round()
   df['overall_avg'] = df['overall_avg'].astype(int)
   
+   # normalizes overall rating
+  min_max_scaler = preprocessing.MinMaxScaler()
+  x_item = df.overall_item.values #returns a numpy array
+  x_item_reshape = x_item.reshape(-1,1)
+  x_item_scaled = min_max_scaler.fit_transform(x_item_reshape)
+  normalized_overallitem = pd.DataFrame(x_item_scaled,columns=['normalized_item'])
+  
+  x_user = df.overall_item.values #returns a numpy array
+  x_user_reshape = x_item.reshape(-1,1)
+  x_user_scaled = min_max_scaler.fit_transform(x_user_reshape)
+  normalized_overalluser = pd.DataFrame(x_user_scaled,columns=['normalized_user'])
+  
+  df = pd.concat([df, normalized_overallitem, normalized_overalluser],axis=1,ignore_idex=True)
+  
   # slices the data in half to work with a manageable amount of data
   df1=df.sample(frac=0.5)
   
-  # normalizes overall rating
   zero_numbering = {1:0, 2:1, 3:2, 4:3, 5:4}
   df1['overall'] = df1['overall'].apply(lambda x: zero_numbering[x])
   df1['overall_avg'] = df1['overall_avg'].apply(lambda x: zero_numbering[x])
+ 
   
   return df1
