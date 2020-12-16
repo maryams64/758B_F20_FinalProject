@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn import preprocessing
 
 def cleandata(df):
   
@@ -31,13 +33,13 @@ def cleandata(df):
   
    # normalizes overall rating
   min_max_scaler = preprocessing.MinMaxScaler()
-  x_item = df.overall_item.values #returns a numpy array
+  x_item = df.overall_item.values 
   x_item_reshape = x_item.reshape(-1,1)
   x_item_scaled = min_max_scaler.fit_transform(x_item_reshape)
   normalized_overallitem = pd.DataFrame(x_item_scaled,columns=['normalized_item'])
   
-  x_user = df.overall_item.values #returns a numpy array
-  x_user_reshape = x_item.reshape(-1,1)
+  x_user = df.overall_user.values 
+  x_user_reshape = x_user.reshape(-1,1)
   x_user_scaled = min_max_scaler.fit_transform(x_user_reshape)
   normalized_overalluser = pd.DataFrame(x_user_scaled,columns=['normalized_user'])
   
@@ -56,6 +58,9 @@ def cleandata(df):
   cv_item_dataframe.reset_index(inplace=True)
   
   #vectorize reviewerID
+  CountVec = CountVectorizer(ngram_range=(1,1),
+                           stop_words='english')
+  
   Count_user_data = CountVec.fit_transform(df1['reviewerID'])
   cv_user_dataframe=pd.DataFrame(Count_user_data.toarray(),columns=CountVec.get_feature_names())
   reviewer_columns = list(cv_user_dataframe.columns)
