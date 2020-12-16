@@ -3,6 +3,8 @@ import pandas as pd
 
 def cleandata(df):
   
+  global asin_columns
+  global reviewer_columns
   # reviewText_iTem contains all reviews pertaining to that item
   # reviewText_user contains all reviews pertaining to that user
   # overall_item contains the average rating per item
@@ -43,6 +45,23 @@ def cleandata(df):
   
   # slices the data in half to work with a manageable amount of data
   df1=df.sample(frac=0.5)
+  
+  CountVec = CountVectorizer(ngram_range=(1,1),
+                           stop_words='english')
+
+  #vectorize asin
+  Count_item_data = CountVec.fit_transform(df1['asin'])
+  cv_item_dataframe=pd.DataFrame(Count_item_data.toarray(),columns=CountVec.get_feature_names())
+  asin_columns = list(cv_item_dataframe.columns)
+  cv_item_dataframe.reset_index(inplace=True)
+  
+  #vectorize reviewerID
+  Count_user_data = CountVec.fit_transform(df1['reviewerID'])
+  cv_user_dataframe=pd.DataFrame(Count_user_data.toarray(),columns=CountVec.get_feature_names())
+  reviewer_columns = list(cv_user_dataframe.columns)
+  cv_user_dataframe.reset_index(inplace=True)
+  
+  df1 = pd.concat([df1, cv_item_dataframe, cv_user_dataframe],axis=1,ignore_index=True)
   
   zero_numbering = {1:0, 2:1, 3:2, 4:3, 5:4}
   df1['overall'] = df1['overall'].apply(lambda x: zero_numbering[x])
