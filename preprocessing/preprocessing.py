@@ -31,7 +31,15 @@ def cleandata(df):
   df['overall_avg'] = df['overall_avg'].round()
   df['overall_avg'] = df['overall_avg'].astype(int)
   
-   # normalizes overall rating
+
+
+  
+  # slices the data in half to work with a manageable amount of data
+  df1=df.sample(frac=0.5)
+  
+  print(df1.columns.values)
+  
+  # normalizes overall rating
   min_max_scaler = preprocessing.MinMaxScaler()
   x_item = df.overall_item.values 
   x_item_reshape = x_item.reshape(-1,1)
@@ -42,18 +50,11 @@ def cleandata(df):
   x_user_reshape = x_user.reshape(-1,1)
   x_user_scaled = min_max_scaler.fit_transform(x_user_reshape)
   normalized_overalluser = pd.DataFrame(x_user_scaled,columns=['normalized_user'])
-  
-  df = pd.concat([df, normalized_overallitem, normalized_overalluser],axis=1,ignore_index=True)
-  
-  # slices the data in half to work with a manageable amount of data
-  df1=df.sample(frac=0.5)
-  
-  print(df1.columns.values)
-  
-  CountVec = CountVectorizer(ngram_range=(1,1),
-                           stop_words='english')
 
   #vectorize asin
+  CountVec = CountVectorizer(ngram_range=(1,1),
+                           stop_words='english')
+  
   Count_item_data = CountVec.fit_transform(df1['asin'])
   cv_item_dataframe=pd.DataFrame(Count_item_data.toarray(),columns=CountVec.get_feature_names())
   asin_columns = cv_item_dataframe.columns.values.tolist()
@@ -68,11 +69,8 @@ def cleandata(df):
   reviewer_columns = cv_user_dataframe.columns.values.tolist()
   cv_user_dataframe.reset_index(inplace=True)
   
-  df1 = pd.concat([df1, cv_item_dataframe, cv_user_dataframe],axis=1,ignore_index=True)
+  df1 = pd.concat([df1, cv_item_dataframe, cv_user_dataframe],axis=1)
   
-  zero_numbering = {1:0, 2:1, 3:2, 4:3, 5:4}
-  df1['overall'] = df1['overall'].apply(lambda x: zero_numbering[x])
-  df1['overall_avg'] = df1['overall_avg'].apply(lambda x: zero_numbering[x])
- 
-  
+  print(df1.columns.values)
+
   return df1
