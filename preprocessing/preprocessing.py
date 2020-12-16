@@ -48,6 +48,8 @@ def cleandata(df):
   # slices the data in half to work with a manageable amount of data
   df1=df.sample(frac=0.5)
   
+  print(df1.columns.values)
+  
   CountVec = CountVectorizer(ngram_range=(1,1),
                            stop_words='english')
 
