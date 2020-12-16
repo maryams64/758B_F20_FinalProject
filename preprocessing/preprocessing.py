@@ -54,7 +54,7 @@ def cleandata(df):
   #vectorize asin
   Count_item_data = CountVec.fit_transform(df1['asin'])
   cv_item_dataframe=pd.DataFrame(Count_item_data.toarray(),columns=CountVec.get_feature_names())
-  asin_columns = list(cv_item_dataframe.columns)
+  asin_columns = cv_item_dataframe.columns.values.tolist()
   cv_item_dataframe.reset_index(inplace=True)
   
   #vectorize reviewerID
@@ -63,7 +63,7 @@ def cleandata(df):
   
   Count_user_data = CountVec.fit_transform(df1['reviewerID'])
   cv_user_dataframe=pd.DataFrame(Count_user_data.toarray(),columns=CountVec.get_feature_names())
-  reviewer_columns = list(cv_user_dataframe.columns)
+  reviewer_columns = cv_user_dataframe.columns.values.tolist()
   cv_user_dataframe.reset_index(inplace=True)
   
   df1 = pd.concat([df1, cv_item_dataframe, cv_user_dataframe],axis=1,ignore_index=True)
