@@ -16,6 +16,8 @@ from sklearn.model_selection import train_test_split
 print("Reading data....")
 asin_columns = []
 reviewer_columns = []
+final_item_list = []
+final_user_list = []
 
 df = pd.read_json('data/Digital_Music_5.json', lines = True)
 
