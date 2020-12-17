@@ -53,6 +53,7 @@ while i+2 < (len(item_list)):
   final_item_list.append(item_list[i])
   final_item_list.append(itemrating_list[i+1])
   final_item_list.append(asin_list[i+2])
+  i += 1
 
 user_list = df1['encoded_user'].tolist()
 userrating_list = df1['normalized_user'].tolist()
@@ -63,6 +64,7 @@ while i+2 < (len(user_list)):
   final_user_list.append(item_list[i])
   final_user_list.append(userrating_list_list[i+1])
   final_user_list.append(reviewerID_list[i+2])
+  i += 1
 
 X= item_list
 X2= user_list
