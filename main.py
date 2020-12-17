@@ -69,7 +69,8 @@ y = list(df1['overall_avg'])
 
 print(len(final_item_list))
 print(len(final_user_list))
-print(len(X[0]))
+print(X)
+print((X[0]))
 
 '''X_item_train, X_item_valid, y_item_train, y_item_valid = train_test_split(X, y, test_size=0.2)
 X_user_train, X_user_valid, y_user_train, y_user_valid = train_test_split(X2, y, test_size=0.2)
