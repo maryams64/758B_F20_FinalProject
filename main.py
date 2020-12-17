@@ -20,11 +20,11 @@ print("Cleaning data....")
 df1 = cleandata(df)
 
 print("Vectorizing data....")
-item_counts = get_counts(df1, 'reviewText_item')
-user_counts = get_counts(df1, 'reviewText_user')
+item_counts = counter(df1, 'reviewText_item')
+user_counts = counter(df1, 'reviewText_user')
 
-item_counts = del_words(item_counts)
-user_counts = del_words(user_counts)
+item_counts = delete(item_counts)
+user_counts = delete(user_counts)
 
 item_words = create_vocab(item_counts)
 user_words = create_vocab(user_counts)
