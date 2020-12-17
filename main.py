@@ -25,6 +25,8 @@ df1 = cleandata(df)
 df1['reviewText_item'] = df1['reviewText_item'].astype(str)
 df1['reviewText_user'] = df1['reviewText_user'].astype(str)
 
+print(df1.columns.values)
+
 print("Vectorizing data....")
 item_counts = get_counts(df1, 'reviewText_item')
 user_counts = get_counts(df1, 'reviewText_user')
