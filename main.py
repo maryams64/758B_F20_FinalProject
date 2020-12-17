@@ -57,7 +57,7 @@ while i+2 < (len(item_list)):
 print(len(final_item_list))
 user_list = df1['encoded_user'].tolist()
 userrating_list = df1['normalized_user'].tolist()
-reviewerID_list = df1.columns[[reviewer_columns]].values.tolist()
+reviewerID_list = df1[df1.columns[reviewer_columns]].values.tolist()
 print(len(user_list))
 print(len(reviewerID_list))
 
