@@ -40,9 +40,7 @@ def train_LSTMmodel(model, dataloader, val, num, epochs=10, lr=0.001):
               torch.save(model.state_dict(), 'model/model'+str(num)+'.pt')
     valid_data = pd.DataFrame(valid_scores,columns=['Epoch','Valid_Loss','Valid_Accuracy','Valid_RMSE'])
     valid_data.set_index('Epoch',inplace=True)
-    plt.figure(figsize=(10, 10))
-    plt.plot(valid_data[0], valid_data[1:])
-    plt.savefig("758B_F20_FinalProject/model_scores.png")
+    valid_data.to_csv("758B_F20_FinalProject/valid data.csv")
     
     return Y_pred
     
