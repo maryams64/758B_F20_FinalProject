@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from preprocessing.preprocessing import cleandata
-from preprocessing.vectorization import counter, delete, get_vocab_size, encoder
+from preprocessing.vectorization import counter, delete, get_vocab_size, encode
 from preprocessing.ReviewDataset import ReviewsDataset
 from model.MultiInputModel import MultiInputModel
 from sklearn.metrics import mean_squared_error
@@ -29,8 +29,8 @@ user_counts = delete(user_counts)
 item_words = get_vocab_size(item_counts)
 user_words = get_vocab_size(user_counts)
 
-df1['encoded_item'] = df1['reviewText_item'].apply(lambda x: np.array(encoder(x, item_words[1])))
-df1['encoded_user']=df1['reviewText_user'].apply(lambda x: np.array(encoder(x, user_words[1])))
+df1['encoded_item'] = df1['reviewText_item'].apply(lambda x: np.array(encode(x, item_words[1])))
+df1['encoded_user']=df1['reviewText_user'].apply(lambda x: np.array(encode(x, user_words[1])))
 
 print("Creating training and validation datasets....")
 X=list(df1['encoded_item'])
