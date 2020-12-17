@@ -95,5 +95,7 @@ item_valid_dl = DataLoader(valid_item_ds, batch_size=batch_size)
 user_train_dl = DataLoader(train_user_ds, batch_size=batch_size)
 user_valid_dl = DataLoader(valid_user_ds, batch_size=batch_size)
 
+print(item_train_dl.shape)
+
 print("Running MultiInputModel....")
 MultiInputModel(item_train_dl,item_valid_dl,item_vocab,user_train_dl,user_valid_dl,user_vocab,100,70,y)
