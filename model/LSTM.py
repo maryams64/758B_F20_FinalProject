@@ -11,10 +11,12 @@ class LSTM_fixed_len2(torch.nn.Module) :
         self.dropout = nn.Dropout(0.2)
 
     def forward(self, x, l):
+        print(x.shape)
         x = self.embeddings(x)
         x = self.dropout(x)
         x, hidden = self.lstm(x)
         x = x.contiguous().view(-1,self.num_flat_features(x))
+        print(x.shape)
         return x
         
     def num_flat_features(self,x):
