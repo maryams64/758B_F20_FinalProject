@@ -41,9 +41,9 @@ df1['encoded_item'] = df1['reviewText_item'].apply(lambda x: np.array(encode_sen
 df1['encoded_user']=df1['reviewText_user'].apply(lambda x: np.array(encode_sentence(x, user_words[1])))
 
 print("Creating training and validation datasets....")
-item_list = list(df1['encoded_item'])
-itemrating_list = list(df1['normalized_item'])
-asin_list = list(df1[df1.columns[asin_columns]])
+item_list = df1['encoded_item'].to_list()
+itemrating_list = df1['normalized_item'].to_list()
+asin_list = df1[df1.columns[asin_columns]].to_list()
 
 item_list.extend(asin_list).extend(itemrating_list)
 
