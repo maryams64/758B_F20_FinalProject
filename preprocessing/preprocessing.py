@@ -69,7 +69,7 @@ def cleandata(df):
   reviewer_columns = cv_user_dataframe.columns.values.tolist()
   cv_user_dataframe.reset_index(inplace=True)
   
-  df1 = pd.concat([df1, cv_item_dataframe, cv_user_dataframe],axis=1)
+  df1 = pd.concat([df1, cv_item_dataframe, cv_user_dataframe, normalized_overallitem, normalized_overalluser],axis=1)
   
   print(df1.columns.values)
 
