@@ -7,7 +7,7 @@ import spacy
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
-
+nltk.download(punkt)
 tok = spacy.load('en_core_web_sm')
 
 
