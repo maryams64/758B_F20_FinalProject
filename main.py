@@ -14,10 +14,6 @@ from torch.utils.data import Dataset, DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
 
 print("Reading data....")
-asin_columns = []
-reviewer_columns = []
-final_item_list = []
-final_user_list = []
 
 df = pd.read_json('data/Digital_Music_5.json', lines = True)
 
@@ -41,39 +37,10 @@ df1['encoded_item'] = df1['reviewText_item'].apply(lambda x: np.array(encode_sen
 df1['encoded_user']=df1['reviewText_user'].apply(lambda x: np.array(encode_sentence(x, user_words[1])))
 
 print("Creating training and validation datasets....")
-item_list = df1['encoded_item'].tolist()
-itemrating_list = df1['normalized_item'].tolist()
 
-i=0
-while i+2 < (len(item_list)):
-  temp = []
-  temp.append(item_list[i])
-  temp.append(itemrating_list[i+1])
-  final_item_list.append(temp)
-  i += 1
-
-user_list = df1['encoded_user'].tolist()
-userrating_list = df1['normalized_user'].tolist()
-
-i=0
-while i+2 < (len(user_list)):
-  temp = []
-  temp.append(item_list[i])
-  temp.append(userrating_list[i+1])
-  final_user_list.append(temp)
-  i += 1
-
-target = list(df1['overall_avg'])
-target.pop(-1)
-target.pop(-2)
-
-item_df = pd.DataFrame(final_item_list)
-user_df = pd.DataFrame(final_user_list)
-target_df = pd.DataFrame(target)
-
-X = item_df.values.tolist()
-X2 = user_df.values.tolist()
-y = target_df.values.tolist()
+X = list(df1['encoded_item'])
+X2 = list(df1['encoded_user'])
+y = list(df1['overall_avg'])
 
 
 
