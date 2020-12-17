@@ -37,8 +37,6 @@ def cleandata(df):
   # slices the data in half to work with a manageable amount of data
   df1=df.sample(frac=0.5)
   
-  print(df1.columns.values)
-  
   # normalizes overall rating
   min_max_scaler = preprocessing.MinMaxScaler()
   x_item = df.overall_item.values 
@@ -70,7 +68,5 @@ def cleandata(df):
   cv_user_dataframe.reset_index(inplace=True)
   
   df1 = pd.concat([df1, cv_item_dataframe, cv_user_dataframe, normalized_overallitem, normalized_overalluser],axis=1)
-  
-  print(df1.columns.values)
 
   return df1
