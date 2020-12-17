@@ -10,6 +10,7 @@ from nltk.corpus import stopwords
 
 nltk.download('punkt')
 tok = spacy.load('en_core_web_sm')
+stop_words = set(stopwords.words('english'))
 
 
 def tokens(text):
