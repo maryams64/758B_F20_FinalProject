@@ -35,10 +35,11 @@ df1['encoded_user']=df1['reviewText_user'].apply(lambda x: np.array(encode(x, us
 print("Creating training and validation datasets....")
 X=list(df1['encoded_item'])
 X2=list(df1['encoded_user'])
-y = list(df1['overall_avg'])
+y1=list(df1['overall_item'])
+y2=list(df1['overall_user'])
 
-X_item_train, X_item_valid, y_item_train, y_item_valid = train_test_split(X, y, test_size=0.2)
-X_user_train, X_user_valid, y_user_train, y_user_valid = train_test_split(X2, y, test_size=0.2)
+X_item_train, X_item_valid, y_item_train, y_item_valid = train_test_split(X, y1, test_size=0.2)
+X_user_train, X_user_valid, y_user_train, y_user_valid = train_test_split(X2, y2, test_size=0.2)
 
 train_item_ds = ReviewsDataset(X_item_train, y_item_train)
 valid_item_ds = ReviewsDataset(X_item_valid, y_item_valid)
