@@ -4,28 +4,26 @@ from collections import Counter
 import re
 import string
 import spacy
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
 
 
 tok = spacy.load('en_core_web_sm')
-def tokenize (text):
-    text = re.sub(r"[^\x00-\x7F]+", " ", text)
-    regex = re.compile('[' + re.escape(string.punctuation) + '0-9\\r\\t\\n]') # remove punctuation and numbers
-    nopunct = regex.sub(" ", text.lower())
-    return [token.text for token in tok.tokenizer(nopunct)]
 
-def get_counts(df, colname):
+
+def tokens(text):
+    return word_tokenize(text)
+
+def counter(df, colname):
   counts = Counter()
-  for index, row in df.iterrows():
-    counts.update(tokenize(row[colname]))
-  #print(counts)
+  for index, row in df1.iterrows():
+        counts.update(tokens(row['reviewText_item']))
   return counts
 
-def del_words(counts):
-  #print("num_words before:",len(counts.keys()))
+def delete(counts):
   for word in list(counts):
-    if counts[word] < 2:
-      del counts[word]
-  #print("num_words after:",len(counts.keys()))
+      if counts[word] in stop_words or counts[word] < 3:
+          del counts[word]
   return counts
 
 def create_vocab(counts):
