@@ -47,9 +47,11 @@ asin_list = df1[df1.columns[asin_columns]].values.tolist()
 
 i=0
 while i+2 < (len(item_list)):
-  final_item_list.append(item_list[i])
-  final_item_list.append(itemrating_list[i+1])
-  final_item_list.append(asin_list[i+2])
+  temp = []
+  temp.append(item_list[i])
+  temp.append(itemrating_list[i+1])
+  temp.append(asin_list[i+2])
+  final_item_list.append(temp)
   i += 1
 
 user_list = df1['encoded_user'].tolist()
@@ -58,9 +60,11 @@ reviewerID_list = df1[df1.columns[reviewer_columns]].values.tolist()
 
 i=0
 while i+2 < (len(user_list)):
-  final_user_list.append(item_list[i])
-  final_user_list.append(userrating_list[i+1])
-  final_user_list.append(reviewerID_list[i+2])
+  temp = []
+  temp.append(item_list[i])
+  temp.append(userrating_list[i+1])
+  temp.append(reviewerID_list[i+2])
+  final_user_list.append(temp)
   i += 1
 
 X= final_item_list
