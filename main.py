@@ -67,12 +67,8 @@ X= final_item_list
 X2= final_user_list
 y = list(df1['overall_avg'])
 
-print(len(final_item_list))
-print(len(final_user_list))
-print(X)
-print((X[0]))
 
-'''X_item_train, X_item_valid, y_item_train, y_item_valid = train_test_split(X, y, test_size=0.2)
+X_item_train, X_item_valid, y_item_train, y_item_valid = train_test_split(X, y, test_size=0.2)
 X_user_train, X_user_valid, y_user_train, y_user_valid = train_test_split(X2, y, test_size=0.2)
 
 train_item_ds = ReviewsDataset(X_item_train, y_item_train)
@@ -91,4 +87,4 @@ user_train_dl = DataLoader(train_user_ds, batch_size=batch_size)
 user_valid_dl = DataLoader(valid_user_ds, batch_size=batch_size)
 
 print("Running MultiInputModel....")
-MultiInputModel(item_train_dl,item_valid_dl,item_vocab,user_train_dl,user_valid_dl,user_vocab,100,70,y)'''
+MultiInputModel(item_train_dl,item_valid_dl,item_vocab,user_train_dl,user_valid_dl,user_vocab,100,70,y)
