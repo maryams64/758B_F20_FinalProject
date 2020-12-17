@@ -42,7 +42,7 @@ def train_LSTMmodel(model, dataloader, val, num, epochs=10, lr=0.001):
     valid_data.set_index('Epoch',inplace=True)
     plt.figure(figsize=(10, 10))
     plt.plot(valid_data[0], valid_data[1:])
-    plt.savefig("model_scores.png")
+    plt.savefig("758B_F20_FinalProject/model_scores.png")
     
     return Y_pred
     
