@@ -71,9 +71,9 @@ item_df = pd.DataFrame(final_item_list)
 user_df = pd.DataFrame(final_user_list)
 target_df = pd.DataFrame(target)
 
-X = item_df.tolist()
-X2 = user_df.tolist()
-y = target_df.tolist()
+X = item_df.values.tolist()
+X2 = user_df.values.tolist()
+y = target_df.values.tolist()
 
 
 
