@@ -16,7 +16,7 @@ def tokens(text):
 
 def counter(df, colname):
   counts = Counter()
-  for index, row in df1.iterrows():
+  for index, row in df.iterrows():
         counts.update(tokens(row['reviewText_item']))
   return counts
 
