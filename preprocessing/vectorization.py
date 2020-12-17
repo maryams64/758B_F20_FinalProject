@@ -38,7 +38,7 @@ def get_vocab_size(counts):
   return words, vocab2index
 
 def encode(text, vocab2index, N=70):
-    tokenized = tokenize(text)
+    tokenized = tokens(text)
     encoded = np.zeros(N, dtype=int)
     enc1 = np.array([vocab2index.get(word, vocab2index["UNK"]) for word in tokenized])
     length = min(N, len(enc1))
