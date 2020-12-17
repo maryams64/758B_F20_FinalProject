@@ -47,9 +47,9 @@ asin_list = df1[df1.columns[asin_columns]].to_list()
 
 item_list.extend(asin_list).extend(itemrating_list)
 
-user_list = list(df1['encoded_user'])
-userrating_list = list(df1['normalized_user'])
-reviewerID_list = list(df1df1.columns[[reviewer_columns]])
+user_list = df1['encoded_user'].to_list()
+userrating_list = df1['normalized_user'].to_list()
+reviewerID_list = df1df1.columns[[reviewer_columns]].to_list()
 
 user_list.extend(reviewerID_list).extend(userrating_list)
 
