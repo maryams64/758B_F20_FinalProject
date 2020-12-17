@@ -67,10 +67,14 @@ target = list(df1['overall_avg'])
 target.pop(-1)
 target.pop(-2)
 
-X = final_item_list
-X2 = final_user_list
-y = target
-print(len(y))
+item_df = pd.DataFrame(final_item_list)
+user_df = pd.DataFrame(final_user_list)
+target_df = pd.DataFrame(target)
+
+X = item_df.tolist()
+X2 = user_df.tolist()
+y = target_df.tolist()
+
 
 
 X_item_train, X_item_valid, y_item_train, y_item_valid = train_test_split(X, y, test_size=0.2)
