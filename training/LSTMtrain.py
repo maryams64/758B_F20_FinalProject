@@ -46,7 +46,7 @@ def validation_LSTMmetrics (model, val):
     for X, Y, h in val:
         X = X.long()
         Y = Y.long()
-        Y_hat = model(X, l)
+        Y_hat = model(X, h)
         loss = F.cross_entropy(Y_hat, Y)
         pred = torch.max(Y_hat, 1)[1]
         correct += (pred == Y).float().sum()
