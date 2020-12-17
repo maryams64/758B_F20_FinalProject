@@ -37,19 +37,5 @@ def cleandata(df):
   # slices the data in half to work with a manageable amount of data
   df1=df.sample(frac=0.5)
   
-  # normalizes overall rating
-  min_max_scaler = preprocessing.MinMaxScaler()
-  x_item = df.overall_item.values 
-  x_item_reshape = x_item.reshape(-1,1)
-  x_item_scaled = min_max_scaler.fit_transform(x_item_reshape)
-  normalized_overallitem = pd.DataFrame(x_item_scaled,columns=['normalized_item'])
-  
-  x_user = df.overall_user.values 
-  x_user_reshape = x_user.reshape(-1,1)
-  x_user_scaled = min_max_scaler.fit_transform(x_user_reshape)
-  normalized_overalluser = pd.DataFrame(x_user_scaled,columns=['normalized_user'])
-
-  
-  df1 = pd.concat([df1, normalized_overallitem, normalized_overalluser],axis=1)
 
   return df1
