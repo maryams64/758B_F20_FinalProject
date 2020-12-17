@@ -62,7 +62,7 @@ reviewerID_list = df1.columns[[reviewer_columns]].values.tolist()
 i=0
 while i+2 < (len(user_list)):
   final_user_list.append(item_list[i])
-  final_user_list.append(userrating_list_list[i+1])
+  final_user_list.append(userrating_list[i+1])
   final_user_list.append(reviewerID_list[i+2])
   i += 1
 
