@@ -49,24 +49,7 @@ def cleandata(df):
   x_user_scaled = min_max_scaler.fit_transform(x_user_reshape)
   normalized_overalluser = pd.DataFrame(x_user_scaled,columns=['normalized_user'])
 
-  #vectorize asin
-  CountVec = CountVectorizer(ngram_range=(1,1),
-                           stop_words='english')
   
-  Count_item_data = CountVec.fit_transform(df1['asin'])
-  cv_item_dataframe=pd.DataFrame(Count_item_data.toarray(),columns=CountVec.get_feature_names())
-  asin_columns = cv_item_dataframe.columns.values.tolist()
-  cv_item_dataframe.reset_index(inplace=True)
-  
-  #vectorize reviewerID
-  CountVec = CountVectorizer(ngram_range=(1,1),
-                           stop_words='english')
-  
-  Count_user_data = CountVec.fit_transform(df1['reviewerID'])
-  cv_user_dataframe=pd.DataFrame(Count_user_data.toarray(),columns=CountVec.get_feature_names())
-  reviewer_columns = cv_user_dataframe.columns.values.tolist()
-  cv_user_dataframe.reset_index(inplace=True)
-  
-  df1 = pd.concat([df1, cv_item_dataframe, cv_user_dataframe, normalized_overallitem, normalized_overalluser],axis=1)
+  df1 = pd.concat([df1, normalized_overallitem, normalized_overalluser],axis=1)
 
   return df1
