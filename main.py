@@ -66,6 +66,7 @@ while i+2 < (len(user_list)):
 X= final_item_list
 X2= final_user_list
 y = list(df1['overall_avg'])
+print(len(y))
 
 
 X_item_train, X_item_valid, y_item_train, y_item_valid = train_test_split(X, y, test_size=0.2)
