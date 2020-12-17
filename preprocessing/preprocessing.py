@@ -1,12 +1,8 @@
 import numpy as np
 import pandas as pd
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn import preprocessing
 
 def cleandata(df):
   
-  global asin_columns
-  global reviewer_columns
   # reviewText_iTem contains all reviews pertaining to that item
   # reviewText_user contains all reviews pertaining to that user
   # overall_item contains the average rating per item
@@ -31,11 +27,12 @@ def cleandata(df):
   df['overall_avg'] = df['overall_avg'].round()
   df['overall_avg'] = df['overall_avg'].astype(int)
   
-
-
-  
   # slices the data in half to work with a manageable amount of data
   df1=df.sample(frac=0.5)
   
-
+  # normalizes overall rating
+  zero_numbering = {1:0, 2:1, 3:2, 4:3, 5:4}
+  df1['overall'] = df1['overall'].apply(lambda x: zero_numbering[x])
+  df1['overall_avg'] = df1['overall_avg'].apply(lambda x: zero_numbering[x])
+  
   return df1
