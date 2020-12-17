@@ -12,6 +12,7 @@ class FCFN(nn.Module):
     self.fc4 = nn.Linear(500, output_dim)
     self.dropout = nn.Dropout(dropout_rate)
   def forward(self, x):
+    print(f"FCFN input: {x.shape}")
     x = F.relu(self.fc1(x))    
     x = self.dropout(x)
     x = F.relu(self.fc2(x))
