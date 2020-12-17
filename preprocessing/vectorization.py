@@ -4,6 +4,7 @@ from collections import Counter
 import re
 import string
 import spacy
+import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
