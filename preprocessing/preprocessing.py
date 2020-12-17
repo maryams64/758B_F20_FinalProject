@@ -34,5 +34,8 @@ def cleandata(df):
   zero_numbering = {1:0, 2:1, 3:2, 4:3, 5:4}
   df1['overall'] = df1['overall'].apply(lambda x: zero_numbering[x])
   df1['overall_avg'] = df1['overall_avg'].apply(lambda x: zero_numbering[x])
+
+  df1['overall_item'] = df1['overall_item'].apply(lambda x: zero_numbering[x])
+  df1['overall_user'] = df1['overall_user'].apply(lambda x: zero_numbering[x])
   
   return df1
