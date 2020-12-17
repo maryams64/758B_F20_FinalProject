@@ -22,7 +22,8 @@ df = pd.read_json('data/Digital_Music_5.json', lines = True)
 print("Cleaning data....")
 df1 = cleandata(df)
 
-print(df1.dtypes)
+df1['reviewText_item].astype(str)
+df1['reviewText_user].astype(str)
 
 print("Vectorizing data....")
 item_counts = get_counts(df1, 'reviewText_item')
