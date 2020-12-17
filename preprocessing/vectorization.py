@@ -26,7 +26,7 @@ def delete(counts):
           del counts[word]
   return counts
 
-def create_vocab(counts):
+def get_vocab_size(counts):
   vocab2index = {"":0, "UNK":1}
   words = ["", "UNK"]
   for word in counts:
@@ -34,7 +34,7 @@ def create_vocab(counts):
     words.append(word)
   return words, vocab2index
 
-def encode_sentence(text, vocab2index, N=70):
+def encode(text, vocab2index, N=70):
     tokenized = tokenize(text)
     encoded = np.zeros(N, dtype=int)
     enc1 = np.array([vocab2index.get(word, vocab2index["UNK"]) for word in tokenized])
