@@ -24,7 +24,7 @@ df = pd.read_json('data/Digital_Music_5.json', lines = True)
 print("Cleaning data....")
 df1 = cleandata(df)
 
-df1['reviewText_item'] = df1['reviewText_item'].astype(str)
+'''df1['reviewText_item'] = df1['reviewText_item'].astype(str)
 df1['reviewText_user'] = df1['reviewText_user'].astype(str)
 
 print(df1.columns.values)
@@ -54,12 +54,14 @@ while i+2 < (len(item_list)):
   final_item_list.append(asin_list[i+2])
   i += 1
 
-print(len(final_item_list))
+print(len(final_item_list))'''
 user_list = df1['encoded_user'].tolist()
 userrating_list = df1['normalized_user'].tolist()
 reviewerID_list = df1.columns[[reviewer_columns]].values.tolist()
+print(len(user_list))
+print(len(reviewerID_list_list))
 
-i=0
+'''i=0
 while i+2 < (len(user_list)):
   print(i)
   final_user_list.append(item_list[i])
@@ -73,7 +75,7 @@ y = list(df1['overall_avg'])
 
 print(len(x))
 
-'''X_item_train, X_item_valid, y_item_train, y_item_valid = train_test_split(X, y, test_size=0.2)
+X_item_train, X_item_valid, y_item_train, y_item_valid = train_test_split(X, y, test_size=0.2)
 X_user_train, X_user_valid, y_user_train, y_user_valid = train_test_split(X2, y, test_size=0.2)
 
 train_item_ds = ReviewsDataset(X_item_train, y_item_train)
