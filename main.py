@@ -26,11 +26,11 @@ user_counts = counter(df1, 'reviewText_user')
 item_counts = delete(item_counts)
 user_counts = delete(user_counts)
 
-item_words = create_vocab(item_counts)
-user_words = create_vocab(user_counts)
+item_words = get_vocab_size(item_counts)
+user_words = get_vocab_size(user_counts)
 
-df1['encoded_item'] = df1['reviewText_item'].apply(lambda x: np.array(encode_sentence(x, item_words[1])))
-df1['encoded_user']=df1['reviewText_user'].apply(lambda x: np.array(encode_sentence(x, user_words[1])))
+df1['encoded_item'] = df1['reviewText_item'].apply(lambda x: np.array(encoder(x, item_words[1])))
+df1['encoded_user']=df1['reviewText_user'].apply(lambda x: np.array(encoder(x, user_words[1])))
 
 print("Creating training and validation datasets....")
 X=list(df1['encoded_item'])
