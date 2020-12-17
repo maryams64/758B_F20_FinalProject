@@ -67,7 +67,7 @@ while i+2 < (len(user_list)):
   final_user_list.append(temp)
   i += 1
 
-target = (list(df1['overall_avg'])).pop(-1).pop(-2)
+target = df1['overall_avg'].tolist().pop(-1).pop(-2)
 X= final_item_list
 X2= final_user_list
 y = target
