@@ -1,4 +1,4 @@
-from model.LSTM import LSTM_fixed_len2
+from model.LSTM import LSTM
 from training.LSTMtrain import train_LSTMmodel
 import numpy as np
 import pandas as pd
