@@ -50,11 +50,11 @@ for train, test in kfold.split(X_all):
   
   rf_cvscores.append(rf_acc)
 
-print("Random Forest - mean: %.6f%% (std: +/- %.6f%%)" % (np.mean(rf_cvscores)*100, np.std(rf_cvscores)*100))
+print("Random Forest Accuracy Score: %.4f%% (std: +/- %.6f%%)" % (np.mean(rf_cvscores)*100, np.std(rf_cvscores)*100))
 
 #SVM
 X_train, X_test, Y_train, Y_test=train_test_split(X_all,Y_overall,test_size=0.3)
 clf=SVC(gamma="auto")
 clf.fit(X_train,Y_train)
 predict=clf.predict(X_test)
-print(f"SVM Accuracy Score: {metrics.accuracy_score(Y_test,predict)*100}")
+print(f"SVM Accuracy Score: {metrics.accuracy_score(Y_test,predict)*100:0.4f}%")
