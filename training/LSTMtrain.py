@@ -30,6 +30,7 @@ def train_LSTMmodel(model, dataloader, val, num, epochs=10, lr=0.001):
             optimizer.step()
             sum_loss += loss.item()*Y.shape[0]
             total += Y.shape[0]
+        val_loss, val_acc, val_rmse = get_LSTMmetrics(model, val)
         if i % 5 == 1:
             #print("epoch: %.1f: train loss %.3f, val loss %.3f, val accuracy %.3f, and val rmse %.3f" % (i, sum_loss/total, val_loss, val_acc, val_rmse))
             modelSave = savebestmodel(val_acc, max, metrics)
@@ -38,7 +39,7 @@ def train_LSTMmodel(model, dataloader, val, num, epochs=10, lr=0.001):
     
     return Y_pred
     
-def validation_LSTMmetrics (model, val):
+def get_LSTMmetrics (model, val):
     model.eval()
     correct = 0
     total = 0
