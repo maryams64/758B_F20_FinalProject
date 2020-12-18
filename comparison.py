@@ -50,7 +50,7 @@ for train, test in kfold.split(X_all):
   
   rf_cvscores.append(rf_acc)
 
-print("Random Forest Accuracy Score: %.4f%%" % (np.mean(rf_cvscores)*100)
+print("Random Forest Accuracy Score: %.4f%%" % (np.mean(rf_cvscores)*100))
 
 #SVM
 X_train, X_test, Y_train, Y_test=train_test_split(X_all,Y_overall,test_size=0.3)
