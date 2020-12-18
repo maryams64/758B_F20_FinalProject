@@ -38,6 +38,7 @@ spacy 2.2.4
 torch 1.7.0
 sklearn 0.22.1
 nltk 3.2.5
+surprise 1.1.1
 ```
 ## Before Running the Code
 
@@ -46,6 +47,8 @@ Your local machine may need to have the following packages installed:
 - torch
 - sklearn
 - nltk
+- surprise
+- Microsoft Visual C++
 
 Follow these steps to download the code onto your local machine:
 `git clone "https://github.com/maryams64/758B_F20_FinalProject/"`
