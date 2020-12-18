@@ -57,7 +57,7 @@ Now you are ready to run the code!
 
 ## Running the Code
 
-Run the following line the run the model:
+Run the following line in your terminal (make sure you are within your local repository) to run the model:
 `python main.py`
 
 The code will take a few minutes to run but it will generate a similar output as this:
@@ -101,4 +101,13 @@ Average Loss: 0.0928  |  Average Accuracy: 0.4696
 Validation Set:
 Average Loss: 0.0974  |  Average Accuracy: 0.7586
 ```
+## Comparison Code
+In order to run the comparison code, run the following line in your terminal in the local repository: `python comparison.py`
+
+The code will print the following:
+- Random Forest Average Accuracy
+- NMF Average Accuracy
+
+Our graphs from our report are generated within Excel.
+
 
