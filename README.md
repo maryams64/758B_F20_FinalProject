@@ -36,8 +36,8 @@ pandas 1.1.5
 re 2.2.1
 spacy 2.2.4
 torch 1.7.0
-sklearn 0.22.1
-nltk 3.2.5
+sklearn 0.22.1 (Pedregosa, Fabian, et al. “Scikit-Learn: Machine Learning in Python.” Journal of Machine Learning Research, 1 Jan. 1970, jmlr.csail.mit.edu/papers/v12/pedregosa11a.html. )
+nltk 3.2.5 (Bird, Steven, et al. Natural Language Processing with Python. OReilly Media Inc., 2009.)
 surprise 1.1.1
 ```
 ## Before Running the Code
