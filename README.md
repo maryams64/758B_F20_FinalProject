@@ -111,6 +111,7 @@ The code will print the following:
 - Random Forest Average Accuracy
 - SVM Accuracy
 - NMF Average Accuracy
+- KNN Accuracy
 
 Our graphs from our report are generated within Excel.
 
