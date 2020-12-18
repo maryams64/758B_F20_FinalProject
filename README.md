@@ -37,6 +37,7 @@ re 2.2.1
 spacy 2.2.4
 torch 1.7.0
 sklearn 0.22.1
+nltk 3.2.5
 ```
 ## Before Running the Code
 
