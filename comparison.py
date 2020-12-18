@@ -8,6 +8,7 @@ from sklearn.model_selection import KFold
 from sklearn.ensemble import RandomForestClassifier
 
 #Data Cleaning
+df = pd.read_json('data/Digital_Music_5.json', lines = True)
 
 df['reviewText_item'] = df.groupby(['asin'])['reviewText'].transform(lambda x : ' '.join(x)) 
 df['overall_item']=df.groupby('asin').overall.transform('mean').round()
