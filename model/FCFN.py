@@ -4,7 +4,7 @@ import torch.nn.functional as F
 
 class FCFN(nn.Module):
 
-  def __init__(self,input_dim=14000,output_dim=5, dropout_rate=0.5):
+  def __init__(self,input_dim=9800,output_dim=5, dropout_rate=0.5):
     super(FCFN,self).__init__()
     self.fc1 = nn.Linear(input_dim,7000)
     self.fc2 = nn.Linear(7000, 1000)
