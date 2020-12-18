@@ -6,6 +6,9 @@ from sklearn.svm import SVC
 from sklearn import metrics
 from sklearn.model_selection import KFold
 from sklearn.ensemble import RandomForestClassifier
+from surprise import NMF
+from surprise import Reader, Dataset
+from sklearn.neighbors import KNeighborsClassifier
 
 #Data Cleaning
 df = pd.read_json('data/Digital_Music_5.json', lines = True)
@@ -58,3 +61,33 @@ clf=SVC(gamma="auto")
 clf.fit(X_train,Y_train)
 predict=clf.predict(X_test)
 print(f"SVM Accuracy Score: {metrics.accuracy_score(Y_test,predict)*100:0.4f}%")
+
+#NMF
+data = pd.concat([df['reviewerID'],df['asin'],df['overall']],axis = 1)
+data2 = pd.concat([df['reviewerID'],df['asin'],df['overall']],axis = 1)
+
+reader = Reader(rating_scale=(1, 5))
+data = Dataset.load_from_df(data, reader)
+NMFModel = NMF ()
+NMFModel.fit(data.build_full_trainset())
+
+predicted = []
+for indx, row in data2.iterrows():
+  pred = NMFModel.predict(uid=row['reviewerID'],iid=row['asin']).est
+  predicted.append(pred)
+  
+true = df['overall'].tolist()
+acc = 0
+for i in range(len(true)):
+  if int(round(predicted[i])) == true[i]:
+    acc += 1
+
+avg = acc/len(true)
+
+print(f"NMF Accuracy: {avg*100:0.4f}%")
+
+#K-nearest Neighbor
+KNModel = KNeighborsClassifier(n_neighbors=3)
+KNModel.fit(X_train, Y_train)
+y_pred = KNModel.predict(X_test)
+print(f"KNN Accuracy: {metrics.accuracy_score(Y_test, y_pred)*100:0.4f}")
