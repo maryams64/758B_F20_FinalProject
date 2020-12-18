@@ -106,6 +106,7 @@ In order to run the comparison code, run the following line in your terminal in 
 
 The code will print the following:
 - Random Forest Average Accuracy
+- SVM Accuracy
 - NMF Average Accuracy
 
 Our graphs from our report are generated within Excel.
