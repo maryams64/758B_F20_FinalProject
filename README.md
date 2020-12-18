@@ -14,10 +14,14 @@ Digital Music dataset from Amazon Reviews Datasets provided by UCSD.
 Network aims to quantify the impact of userID and asin on the rating given to a product. 
 
 Inputs: 
-`userID + reviewText`
-`asin + reviewText`
+`reviewText_user`
+`reviewText_item`
 
-Outputs:
+LSTM Target:
+'overall_user'
+'overall_item
+
+FCFN Target:
 `overall`
 
 - Inputs are fed into individual LSTM cells, one for reviewuser items and one for reviewitem items. 
