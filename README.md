@@ -48,7 +48,7 @@ Your local machine may need to have the following packages installed:
 - sklearn
 - nltk
 - surprise
-- Microsoft Visual C++
+- Microsoft Visual C++ 14.0
 
 Follow these steps to download the code onto your local machine:
 `git clone "https://github.com/maryams64/758B_F20_FinalProject/"`
