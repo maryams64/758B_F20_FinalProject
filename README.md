@@ -18,8 +18,8 @@ Inputs:
 `reviewText_item`
 
 LSTM Target:
-'overall_user'
-'overall_item
+`overall_user`
+`overall_item`
 
 FCFN Target:
 `overall`
@@ -44,6 +44,7 @@ Your local machine may need to have the following packages installed:
 - spacy
 - torch
 - sklearn
+- nltk
 
 Follow these steps to download the code onto your local machine:
 `git clone "https://github.com/maryams64/758B_F20_FinalProject/"`
