@@ -35,6 +35,7 @@ df1['encoded_user']=df1['reviewText_user'].apply(lambda x: np.array(encode(x, us
 print("Creating training and validation datasets....")
 X=list(df1['encoded_item'])
 X2=list(df1['encoded_user'])
+y = list(df1['overall_avg'])
 y1=list(df1['overall_item'])
 y2=list(df1['overall_user'])
 
@@ -57,4 +58,4 @@ user_train_dl = DataLoader(train_user_ds, batch_size=batch_size)
 user_valid_dl = DataLoader(valid_user_ds, batch_size=batch_size)
 
 print("Running MultiInputModel....")
-MultiInputModel(item_train_dl,item_valid_dl,item_vocab,user_train_dl,user_valid_dl,user_vocab,100,70,y)
+MultiInputModel(item_train_dl,item_valid_dl,item_vocab,user_train_dl,user_valid_dl,user_vocab,100,70,y,y1,y2)
