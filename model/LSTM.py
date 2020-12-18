@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn 
 import torch.nn.functional as F 
 
-class LSTM_fixed_len2(torch.nn.Module) :
+class LSTM(torch.nn.Module) :
     def __init__(self, vocab_size, embedding_dim, hidden_dim) :
         super().__init__()
         self.embeddings = nn.Embedding(vocab_size, embedding_dim, padding_idx=0)
