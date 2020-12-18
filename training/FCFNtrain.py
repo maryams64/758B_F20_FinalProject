@@ -50,7 +50,6 @@ def trainFCFN(model, train_loader, optimizer, criterion):
   
   return avg_loss, avg_acc
 def evaluateFCFN(model, val_loader, criterion):
-  epoch_data = []
   epoch_loss, epoch_acc = 0.0, 0.0
   model.eval()
 
@@ -71,9 +70,6 @@ def evaluateFCFN(model, val_loader, criterion):
 
       avg_loss = epoch_loss/len(val_loader.dataset)
       avg_acc = epoch_acc/len(val_loader.dataset)
-      epoch_data.append([avg_loss,avg_acc])
-      epoch_df = pd.DataFrame(epoch_data,columns=['Avg. Loss','Avg. Accuracy'])
-      epoch_df.to_csv("758B_F20_FinalProject/epoch_data.csv")
   
 
   return avg_loss, avg_acc
