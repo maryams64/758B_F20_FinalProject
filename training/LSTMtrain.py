@@ -9,7 +9,6 @@ from torch.autograd import Variable
 from torch.utils.data import Dataset, DataLoader, TensorDataset
 import matplotlib.pyplot as plt
 
-valid_scores = []
 #defining the functions which will find the best LSTM Model
 def train_LSTMmodel(model, dataloader, val, num, epochs=10, lr=0.001):
     
@@ -31,16 +30,11 @@ def train_LSTMmodel(model, dataloader, val, num, epochs=10, lr=0.001):
             optimizer.step()
             sum_loss += loss.item()*Y.shape[0]
             total += Y.shape[0]
-        val_loss, val_acc, val_rmse = validation_LSTMmetrics(model, val)
-        valid_scores.append([i,val_loss, val_acc, val_rmse])
         if i % 5 == 1:
             #print("epoch: %.1f: train loss %.3f, val loss %.3f, val accuracy %.3f, and val rmse %.3f" % (i, sum_loss/total, val_loss, val_acc, val_rmse))
             modelSave = savebestmodel(val_acc, max, metrics)
             if modelSave:
               torch.save(model.state_dict(), 'model/model'+str(num)+'.pt')
-    valid_data = pd.DataFrame(valid_scores,columns=['Epoch','Valid_Loss','Valid_Accuracy','Valid_RMSE'])
-    valid_data.set_index('Epoch',inplace=True)
-    valid_data.to_csv("758B_F20_FinalProject/valid data.csv")
     
     return Y_pred
     
